@@ -69,3 +69,4 @@
 ;; MISC
 (package! nyan-mode)
 (package! aggressive-indent)
+(package! emojify)
