@@ -45,9 +45,3 @@
         :desc "Slurp backwards" "S" #'sp-backward-slurp-sexp
         :desc "Barf forwards" "d" #'sp-forward-barf-sexp
         :desc "Barf backwards" "D" #'sp-backward-barf-sexp))
-
-;; Disable arrow keys for HARD mode
-;; (global-unset-key (kbd "<left>"))
-;; (global-unset-key (kbd "<right>"))
-;; (global-unset-key (kbd "<up>"))
-;; (global-unset-key (kbd "<down>"))
