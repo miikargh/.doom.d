@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 13))
+(setq doom-font (font-spec :family "Fira Code" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -32,7 +32,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type t)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -59,10 +59,10 @@
 
 ;; python
 (setq
- python-shell-interpreter "/Users/miikamoilanen/miniconda3/bin/python" ;; Set before company mode
- python-environment-directory "/Users/miikamoilanen/miniconda/envs/"
+ python-shell-interpreter "/home/miikargh/miniconda3/bin/python" ;; Set before company mode
+ python-environment-directory "/home/miikargh/miniconda3/envs"
  )
-(setenv "WORKON_HOME" "/Users/miikamoilanen/miniconda3/envs")
+(setenv "WORKON_HOME" "/home/miikargh/miniconda3/envs")
 
 (def-package! lsp-python-ms
   :after (pyvenv)
@@ -102,11 +102,11 @@
 ;; ORG
 (add-hook 'org-mode-hook #'+word-wrap-mode)
 
-;; Global
-
 (setq
- projectile-project-search-path '("~/projects" "~/work" "~/learning"))
+ projectile-project-search-path '("~/projects" "~/work" "~/learning" "~/kaggles")
+ )
 
+;; Company
 (def-package! company
   :config
   (setq company-idle-delay 0
@@ -128,6 +128,10 @@
 (setq company-lsp-enable-snippet nil
       lsp-enable-snippet nil)
 
+;; Docker
+;; (add-to-list '+format-on-save-enabled-modes 'dockerfile-mode)
+
+;; Misc
 (def-package! nyan-mode
   :config
   (nyan-mode)
@@ -135,9 +139,13 @@
 
 (display-time) ;; Show time on modeline
 (display-battery-mode)
+(global-emojify-mode)
 
 ;; UTF-8 as default encoding
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+
+;; Fix for the dead-grave but on Pop!_OS
+(global-set-key [S-dead-grave] "`")
