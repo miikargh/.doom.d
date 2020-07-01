@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Miika Moilanen"
-      user-mail-address "mamoilanen@gmail.com")
+      user-mail-address "miika.moilanen@utopiaanalytics.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 15))
+(setq doom-font (font-spec :family "Inconsolata" :size 17))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -59,12 +59,12 @@
 
 ;; python
 (setq
- python-shell-interpreter "/home/miikargh/miniconda3/bin/python" ;; Set before company mode
- python-environment-directory "/home/miikargh/miniconda3/envs"
+ python-shell-interpreter "/home/miika/miniconda3/bin/python" ;; Set before company mode
+ python-environment-directory "/home/miika/miniconda3/envs"
  )
-(setenv "WORKON_HOME" "/home/miikargh/miniconda3/envs")
+(setenv "WORKON_HOME" "/home/miika/miniconda3/envs")
 
-(def-package! lsp-python-ms
+(use-package! lsp-python-ms
   :after (pyvenv)
   :config
   (add-hook 'pyvenv-post-activate-hooks 'lsp)
@@ -93,7 +93,7 @@
  )
 
 ;; Clojure
-(def-package! flycheck-clj-kondo
+(use-package! flycheck-clj-kondo
   :after clojure-mode)
 (add-hook! clojure-mode-hook 'aggressive-indent-mode)
 (add-hook! clojure-mode-hook 'paredit-mode)
@@ -103,11 +103,10 @@
 (add-hook 'org-mode-hook #'+word-wrap-mode)
 
 (setq
- projectile-project-search-path '("~/projects" "~/work" "~/learning" "~/kaggles")
- )
+ projectile-project-search-path '("~/projects" "~/dev"))
 
 ;; Company
-(def-package! company
+(use-package! company
   :config
   (setq company-idle-delay 0
         company-minimum-prefix-length 1
@@ -118,7 +117,7 @@
   (global-company-mode t)
   )
 
-(def-package! company-lsp
+(use-package! company-lsp
   :after (company)
   :config
   (setq company-lsp-enable-snippet nil)
@@ -132,7 +131,7 @@
 ;; (add-to-list '+format-on-save-enabled-modes 'dockerfile-mode)
 
 ;; Misc
-(def-package! nyan-mode
+(use-package! nyan-mode
   :config
   (nyan-mode)
   (nyan-start-animation))
