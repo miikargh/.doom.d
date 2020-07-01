@@ -63,6 +63,9 @@
 (package! emmet-mode)
 (package! eslint-fix)
 
+;; YAML
+(package! yaml-mode)
+
 ;; Python stuff
 (package! lsp-python-ms)
 
