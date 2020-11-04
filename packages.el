@@ -50,6 +50,9 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
+;; Formatting
+;; (package! format-all)
+
 ;; Language server protocol
 (package! company-lsp)
 
@@ -66,8 +69,8 @@
 ;; YAML
 (package! yaml-mode)
 
-;; Python stuff
-(package! lsp-python-ms)
+;; Protobuf
+(package! protobuf-mode)
 
 ;; MISC
 (package! nyan-mode)

@@ -19,6 +19,10 @@
 (map! (:prefix "gs" :n "s" nil))
 (map! (:prefix "gs" :n "s" #'evil-avy-goto-char-timer))
 
+;; (defun insert-python-breakpoint ()
+;;   "Adds a IPython breakpoint to where the cursor is."
+;;   (insert "from IPython.core.debugger import set_trace; set_trace()"))
+
 (map! :after python
       :map python-mode-map
       :localleader
@@ -31,17 +35,25 @@
       (:prefix ("v" . "pyvenv")
         :desc "Work on virtual environment" "v" #'pyvenv-workon
         :desc "Deactivate virtual environmnent" "d" #'pyvenv-deactivate
-        ))
+        )
+      (:prefix ("f" . "format")
+       :desc "Format all buffer" "a" #'format-all-buffer)
+      ;; (:prefix ("f" . "format")
+      ;;  :desc "Format buffer" "a" #'py-yapf-buffer)
+      )
 
 ;; (map! :after smartparens-mode
 ;;       :map paredit-mode-map
 ;;       (:prefix "k"
 ;;         :desc "Forward slurp" "s" #'paredit-forward-slurp-sexp
 ;;         :desc "Backward slurp" "S" #'paredit-backward-slurp-sexp))
-;;
+
 (map! :leader
       (:prefix ("k" "smartparens")
         :desc "Slurp forwards" "s" #'sp-forward-slurp-sexp
         :desc "Slurp backwards" "S" #'sp-backward-slurp-sexp
         :desc "Barf forwards" "d" #'sp-forward-barf-sexp
         :desc "Barf backwards" "D" #'sp-backward-barf-sexp))
+
+(global-set-key (kbd "C-S-C") #'copy-to-clipboard)
+(global-set-key (kbd "C-S-V") #'paste-from-clipboard)
