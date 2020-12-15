@@ -72,6 +72,9 @@
 ;; Protobuf
 (package! protobuf-mode)
 
+;; Scala
+(package! scalariform)
+
 ;; MISC
 (package! nyan-mode)
 (package! aggressive-indent)
