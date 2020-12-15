@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 15))
+(setq doom-font (font-spec :family "Fira Code" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -54,6 +54,7 @@
 ;;
 
 (load! "+bindings")
+(load! "+scala")
 
 
 ;; python
@@ -71,7 +72,7 @@
  lsp-pyls-plugins-yapf-enabled nil
  )
 
-(set-formatter! 'black "black -q --config /home/miika/.config/black.toml -")
+;; (set-formatter! 'black "black -q --config /home/miika/.config/black.toml -")
 
 (setenv "WORKON_HOME" "/home/miika/miniconda3/envs")
 
@@ -119,7 +120,7 @@
 ;; (use-package! emacs-reveal)
 
 (setq
- projectile-project-search-path '("~/projects" "~/code" "~/mounts" "~/presentations", "~/notes"))
+ projectile-project-search-path '("~/dev" "~/learning"))
 
 
 (use-package! protobuf-mode)
@@ -174,6 +175,10 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
+;; Title Bars on Mac
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 ;; Fix for the dead-grave but on Pop!_OS
 (global-set-key [S-dead-grave] "`")
 (custom-set-variables
@@ -181,18 +186,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(safe-local-variable-values
-   (quote
-    ((eval set-formatter!
-           (quote black)
-           "black -q --config /home/miika/projects/image-classifier/black.toml -")
-     (eval setq black-config-file "/home/miika/projects/image-classifier/black.toml")
-     (black-config-file "/home/miika/projects/image-classifier/black.toml")
-     (eval conda-env-activate "gekko4")
-     (eval conda-env-activate "image-classifier")
-     (eval conda-env-activate "image-fetcher")
-     (eval conda-env-activate "image-moderator-tf")
-     (eval conda-env-activate "image-moderator-tf-p3.7")))))
+ )
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
